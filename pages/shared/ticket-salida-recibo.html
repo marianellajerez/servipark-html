@@ -113,27 +113,27 @@
 
             <div class="ticket-item">
               <span>Fecha de Ingreso</span>
-              <strong>${new Date(Date.now() - 2 * 60 * 60 * 1000).toLocaleString('es-CO', { hour: 'numeric', minute: '2-digit', hour12: true, day: '2-digit', month: '2-digit', year: 'numeric' })}</strong>
+              <strong id="fechaIngreso">Calculando...</strong>
             </div>
 
             <div class="ticket-item">
               <span>Fecha de Salida</span>
-              <strong>${new Date().toLocaleString('es-CO', { hour: 'numeric', minute: '2-digit', hour12: true, day: '2-digit', month: '2-digit', year: 'numeric' })}</strong>
+              <strong id="fechaActual">Calculando...</strong>
             </div>
 
             <div class="ticket-item">
               <span>Tiempo Transcurrido</span>
-              <strong>2 horas</strong>
+              <strong id="tiempoDisplay">Calculando...</strong>
             </div>
 
             <div class="ticket-item tarifa">
               <span>Tarifa (Minuto)</span>
-              <strong>$100</strong>
+              <strong id="tarifaDisplay">Calculando...</strong>
             </div>
 
             <div class="ticket-item total">
               <span>VALOR TOTAL</span>
-              <strong>$200</strong>
+              <strong id="totalDisplay">Calculando...</strong>
             </div>
           </div>
 
@@ -154,8 +154,6 @@
   </div>
 
   <script src="../../js/dashboard.js"></script>
-  <script>
-    document.getElementById('placaDisplay').textContent = localStorage.getItem('lastPlaca') || 'ABC123';
-  </script>
+  <script src="../../js/ticket.js"></script>
 </body>
 </html>

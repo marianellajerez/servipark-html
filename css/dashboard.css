@@ -250,3 +250,13 @@ nav {
 .admin-only {
   display: none;
 }
+
+/* Regla indispensable para que el JS de arriba funcione */
+.user-dropdown.show {
+    display: block !important;
+}
+
+/* Para que la flecha del menú rote suavemente */
+.user-menu-button svg {
+    transition: transform 0.3s ease;
+}
