@@ -23,11 +23,13 @@ document.addEventListener('DOMContentLoaded', function () {
     localStorage.setItem('userRole', role);
     localStorage.setItem('userName', role === 'ADMINISTRADOR' ? 'Admin' : 'Cajero');
 
-    // Redirige dashboard
-    window.location.href = 'dashboard.html';
+    //window.location.href = './pages/shared/ingresar-vehiculo.html';
 
+    // Redirige dashboard
     if (role == 'ADMINISTRADOR') {
-      
+      window.location.href = 'dashboard-admin.html';
+    } else if (role == 'CAJERO') {
+      window.location.href = 'dashboard-cajero.html';
     }
   });
 });
