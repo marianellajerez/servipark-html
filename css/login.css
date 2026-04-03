@@ -1,0 +1,68 @@
+/* :host se refiere al selector del componente (<app-login>) */
+body {
+  /* Usamos Flexbox para centrar todo */
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center;   /* Centra verticalmente */
+  
+  /* Asegura que ocupe toda la pantalla */
+  width: 100%;
+  min-height: 100vh; /* 100% de la altura de la vista */
+  
+  /* Usa el color de fondo global que definimos */
+  background-color: var(--color-bg); 
+}
+
+/* Este es el contenedor que tiene la clase .card.
+  Le damos un ancho máximo.
+*/
+.login-container {
+  width: 100%;
+  max-width: 400px; /* Un buen ancho para un formulario de login */
+}
+
+/* (Opcional) Estilos para el logo o título */
+.login-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.login-header h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.login-header h3 {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  margin: 4px 0 0 0;
+}
+
+.error-message {
+  color: var(--color-danger);
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.role-selection {
+  margin-bottom: 16px;
+}
+
+.role-selection label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.role-selection input {
+  margin-right: 8px;
+}
+
+.note {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin: 10px 0;
+}

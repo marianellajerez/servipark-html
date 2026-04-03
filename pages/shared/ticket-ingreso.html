@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ticket de Ingreso - ServiPark</title>
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/dashboard.css">
+</head>
+<body>
+  <div class="sidenav" id="sidenav">
+    <div class="sidenav-header">
+      <h3>ServiPark</h3>
+    </div>
+
+    <nav>
+      <ul class="nav-list">
+        
+        <li>
+          <a class="nav-link" href="ingresar-vehiculo.html">Ingresar Vehículo</a>
+        </li>
+
+        <li>
+          <a class="nav-link" href="cobrar-parqueo.html">Cobrar Parqueo</a>
+        </li>
+
+        <li>
+          <a class="nav-link" href="ver-ticket-activo.html">Ver Ticket Activo</a>
+        </li>
+
+        <li class="admin-only">
+          <div class="accordion-item">
+            <button class="accordion-header" id="admin-toggle">
+              <span>Administrar</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+              </svg>
+            </button>
+            
+            <ul class="accordion-content" id="admin-content">
+              <li><a href="../admin/tipos-vehiculo.html">Tipos de vehículo</a></li>
+              <li><a href="../admin/usuarios.html">Usuarios</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="admin-only">
+          <a class="nav-link" href="../admin/reportes.html">Reportes Avanzados</a>
+        </li>
+
+        <li class="cajero-only">
+          <a class="nav-link" href="../cajero/historial.html">Mi Historial de Cobros</a>
+        </li>
+
+      </ul>
+    </nav>
+
+    <div class="logout-button-wrapper">
+      <button class="btn btn-logout" onclick="logout()">Cerrar Sesión</button>
+    </div>
+  </div>
+
+  <div class="main-content-wrapper">
+
+    <header class="header-shell">
+
+      <div class="spacer"></div>
+
+      <div class="user-menu">
+
+        <button class="user-menu-button" onclick="toggleMenu()">
+          <span id="userName">Hola, Usuario</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+          </svg>
+        </button>
+
+        <div class="user-dropdown card" id="userDropdown">
+          <div class="user-info">
+            <div class="user-name" id="dropdownUserName">Usuario</div>
+            <div class="user-email" id="dropdownUserEmail">email@example.com</div>
+            <div class="user-role" id="dropdownUserRole">ROL</div>
+          </div>
+
+          <hr class="divider">
+
+          <button class="btn btn-secondary btn-full-width" onclick="logout()">Cerrar Sesión</button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="page-content">
+      <div class="ticket-detalle-container">
+        <h2 class="detalle-titulo">Ticket Generado Exitosamente</h2>
+
+        <div class="ticket-wrapper">
+          <div class="ticket-header">
+            <h2>ServiPark</h2>
+            <p>Comprobante de Ingreso</p>
+          </div>
+
+          <div class="ticket-body">
+            <div class="ticket-item">
+              <span>Placa</span>
+              <strong id="placaDisplay">ABC123</strong>
+            </div>
+
+            <div class="ticket-item">
+              <span>Tipo de Vehículo</span>
+              <strong id="tipoDisplay">Carro</strong>
+            </div>
+
+            <div class="ticket-item">
+              <span>Fecha de Ingreso</span>
+              <strong>${new Date().toLocaleString('es-CO', { hour: 'numeric', minute: '2-digit', hour12: true, day: '2-digit', month: '2-digit', year: 'numeric' })}</strong>
+            </div>
+
+            <div class="ticket-item tarifa">
+              <span>Tarifa (Minuto)</span>
+              <strong>$100</strong>
+            </div>
+          </div>
+
+          <div class="ticket-footer">
+            <p>Conserve este ticket</p>
+          </div>
+        </div>
+
+        <a href="ingresar-vehiculo.html" class="btn btn-primary btn-full-width">Registrar Otro Vehículo</a>
+        <a href="cobrar-parqueo.html" class="btn btn-secondary btn-full-width">Cobrar Parqueo</a>
+      </div>
+    </main>
+
+  </div>
+
+</body>
+</html>

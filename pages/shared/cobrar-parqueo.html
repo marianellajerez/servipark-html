@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cobrar Parqueo - ServiPark</title>
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/dashboard.css">
+</head>
+<body>
+  <div class="sidenav" id="sidenav">
+    <div class="sidenav-header">
+      <h3>ServiPark</h3>
+    </div>
+
+    <nav>
+      <ul class="nav-list">
+        
+        <li>
+          <a class="nav-link" href="ingresar-vehiculo.html">Ingresar Vehículo</a>
+        </li>
+
+        <li>
+          <a class="nav-link" href="cobrar-parqueo.html">Cobrar Parqueo</a>
+        </li>
+
+        <li>
+          <a class="nav-link" href="ver-ticket-activo.html">Ver Ticket Activo</a>
+        </li>
+
+        <li class="admin-only">
+          <div class="accordion-item">
+            <button class="accordion-header" id="admin-toggle">
+              <span>Administrar</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+              </svg>
+            </button>
+            
+            <ul class="accordion-content" id="admin-content">
+              <li><a href="../admin/tipos-vehiculo.html">Tipos de vehículo</a></li>
+              <li><a href="../admin/usuarios.html">Usuarios</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="admin-only">
+          <a class="nav-link" href="../admin/reportes.html">Reportes Avanzados</a>
+        </li>
+
+        <li class="cajero-only">
+          <a class="nav-link" href="../cajero/historial.html">Mi Historial de Cobros</a>
+        </li>
+
+      </ul>
+    </nav>
+
+    <div class="logout-button-wrapper">
+      <button class="btn btn-logout" onclick="logout()">Cerrar Sesión</button>
+    </div>
+  </div>
+
+  <div class="main-content-wrapper">
+
+    <header class="header-shell">
+
+      <div class="spacer"></div>
+
+      <div class="user-menu">
+
+        <button class="user-menu-button" onclick="toggleMenu()">
+          <span id="userName">Hola, Usuario</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+          </svg>
+        </button>
+
+        <div class="user-dropdown card" id="userDropdown">
+          <div class="user-info">
+            <div class="user-name" id="dropdownUserName">Usuario</div>
+            <div class="user-email" id="dropdownUserEmail">email@example.com</div>
+            <div class="user-role" id="dropdownUserRole">ROL</div>
+          </div>
+
+          <hr class="divider">
+
+          <button class="btn btn-secondary btn-full-width" onclick="logout()">Cerrar Sesión</button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="page-content">
+      <div class="card">
+        <h2>Cobrar Parqueo y Registrar Salida</h2>
+
+        <form id="searchForm">
+          <div class="form-group">
+            <label for="placa">Placa del Vehículo</label>
+            <div class="plate-input-wrapper">
+              <input 
+                id="placa" 
+                type="text" 
+                name="placa"
+                value="ABC123"
+                readonly
+                maxlength="6"
+                minlength="6"
+                required>
+            </div>
+          </div>
+
+          <button type="button" onclick="cobrarParqueo()" class="btn btn-primary btn-full-width">
+            Cobrar y Generar Recibo
+          </button>
+        </form>
+      </div>
+
+      <div id="errorMensaje" class="response-message error" style="display: none;"></div>
+    </main>
+
+  </div>
+
+</body>
+</html>

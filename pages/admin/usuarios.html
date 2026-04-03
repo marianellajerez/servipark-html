@@ -1,0 +1,53 @@
+  <div class="card">
+
+      <div class="card-header-split">
+          <div class="header-title">
+              <h2>Gestión de Usuarios</h2>
+              <p>Crear, editar y desactivar usuarios del sistema (Cajeros y Administradores).</p>
+          </div>
+          <div class="header-actions">
+              <button class="btn btn-primary" onclick="alert('Crear Nuevo Usuario')">
+                  Crear Nuevo Usuario
+              </button>
+          </div>
+      </div>
+
+      <div class="table-responsive">
+          <table>
+              <thead>
+                  <tr>
+                      <th>Nombre</th>
+                      <th>Correo (Login)</th>
+                      <th>Rol</th>
+                      <th class="text-right">Estado</th>
+                      <th class="text-right">Acciones</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>Admin User</td>
+                      <td>admin@servipark.com</td>
+                      <td>ADMINISTRADOR</td>
+                      <td class="text-right">
+                          <span class="badge badge-active">Activo</span>
+                      </td>
+                      <td class="text-right">
+                          <button class="btn btn-secondary" onclick="alert('Gestionar')">Gestionar</button>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>Cajero User</td>
+                      <td>cajero@servipark.com</td>
+                      <td>CAJERO</td>
+                      <td class="text-right">
+                          <span class="badge badge-active">Activo</span>
+                      </td>
+                      <td class="text-right">
+                          <button class="btn btn-secondary" onclick="alert('Gestionar')">Gestionar</button>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+
+  </div>
