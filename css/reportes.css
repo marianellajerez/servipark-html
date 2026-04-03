@@ -1,0 +1,29 @@
+/* Contenedor principal de los gráficos */
+.charts-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 24px;
+    width: 100%;
+}
+
+/* Contenedor individual de cada gráfico */
+.chart-container {
+    flex: 1;
+    min-width: 300px; /* Evita que se colapsen en pantallas pequeñas */
+    height: 400px;    /* Altura fija para evitar el salto al fondo */
+    position: relative; /* CRÍTICO para Chart.js */
+    background-color: var(--color-bg-card);
+}
+
+.chart-container h3 {
+    margin: 0 0 15px 0;
+    font-size: 16px;
+    color: var(--color-text);
+}
+
+/* Forzamos que el canvas ocupe solo su espacio */
+canvas {
+    width: 100% !important;
+    height: calc(100% - 40px) !important;
+}

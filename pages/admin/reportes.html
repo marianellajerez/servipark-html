@@ -1,77 +1,115 @@
-  <div class="reportes-container">
-    
-    <h2 class="title">📈 Reportes Avanzados de Operación</h2>
-
-    <div class="filter-section">
-      <form id="reporteForm">
-        <div class="form-group">
-          <label for="fechaInicio">Fecha/Hora de Inicio:</label>
-          <input type="datetime-local" id="fechaInicio" name="fechaInicio" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="fechaFin">Fecha/Hora de Fin:</label>
-          <input type="datetime-local" id="fechaFin" name="fechaFin" class="form-control">
-        </div>
-        <button type="submit" class="btn btn-primary">
-          Generar Reporte
-        </button>
-      </form>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reportes Avanzados - ServiPark</title>
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/dashboard.css">
+  <link rel="stylesheet" href="../../css/reportes.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="sidenav" id="sidenav">
+    <div class="sidenav-header">
+      <h3>ServiPark</h3>
     </div>
-
-    <div class="results-section">
-      <div class="kpi-cards">
-          <div class="kpi-card">
-            <h3>Ingresos Totales</h3>
-            <p>$1,000.00</p>
+    <nav>
+      <ul class="nav-list">
+        <li><a class="nav-link" href="../shared/ingresar-vehiculo.html">Ingresar Vehículo</a></li>
+        <li><a class="nav-link" href="../shared/cobrar-parqueo.html">Cobrar Parqueo</a></li>
+        <li><a class="nav-link" href="../shared/ver-ticket-activo.html">Ver Ticket Activo</a></li>
+        <li class="admin-only">
+          <div class="accordion-item">
+            <button class="accordion-header" id="admin-toggle">
+              <span>Administrar</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+              </svg>
+            </button>
+            <ul class="accordion-content" id="admin-content">
+              <li><a href="tipos-vehiculo.html">Tipos de vehículo</a></li>
+              <li><a href="usuarios.html">Usuarios</a></li>
+            </ul>
           </div>
-          <div class="kpi-card">
-            <h3>Tickets Cerrados</h3>
-            <p>10</p>
-          </div>
-      </div>
-
-      <div class="charts-grid">
-        <div class="chart-placeholder">Gráfico de Distribución de Vehículos</div>
-        <div class="chart-placeholder">Gráfico de Tendencia de Ingresos</div>
-      </div>
-
-      <div class="card table-card">
-        <h3>Detalle del Historial de Tickets Cerrados (5 Registros)</h3>
-        <div class="table-responsive">
-          <table class="historic-table">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Placa</th>
-                <th>Tipo Vehículo</th>
-                <th>F. Ingreso</th>
-                <th>F. Salida</th>
-                <th>Cajero</th>
-                <th>Valor Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td><strong>ABC123</strong></td>
-                <td>Carro</td>
-                <td>2023-01-01 10:00</td>
-                <td>2023-01-01 12:00</td>
-                <td>cajero@servipark.com</td>
-                <td>$200.00</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td><strong>DEF456</strong></td>
-                <td>Moto</td>
-                <td>2023-01-01 11:00</td>
-                <td>2023-01-01 13:00</td>
-                <td>cajero@servipark.com</td>
-                <td>$100.00</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+        </li>
+        <li class="admin-only"><a class="nav-link active" href="reportes.html">Reportes Avanzados</a></li>
+        <li class="cajero-only"><a class="nav-link" href="../cajero/historial.html">Mi Historial de Cobros</a></li>
+      </ul>
+    </nav>
+    <div class="logout-button-wrapper">
+      <button class="btn btn-logout" onclick="logout()">Cerrar Sesión</button>
     </div>
   </div>
+
+  <div class="main-content-wrapper">
+    <header class="header-shell">
+      <div class="spacer"></div>
+      <div class="user-menu">
+        <button class="user-menu-button" onclick="toggleMenu()">
+          <span id="userName">Hola, Usuario</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+          </svg>
+        </button>
+        <div class="user-dropdown card" id="userDropdown">
+          <div class="user-info">
+            <div class="user-name" id="dropdownUserName">Usuario</div>
+            <div class="user-email" id="dropdownUserEmail">email@example.com</div>
+            <div class="user-role" id="dropdownUserRole">ROL</div>
+          </div>
+          <hr class="divider">
+          <button class="btn btn-secondary btn-full-width" onclick="logout()">Cerrar Sesión</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <div class="reportes-container">
+        <h2 class="title">📈 Reportes Avanzados de Operación</h2>
+
+        <div class="filter-section card">
+          <form id="reporteForm">
+            <div class="form-group">
+              <label for="fechaInicio">Fecha de Inicio:</label>
+              <input type="date" id="fechaInicio" name="fechaInicio" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="fechaFin">Fecha de Fin:</label>
+              <input type="date" id="fechaFin" name="fechaFin" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary btn-full-width">Generar Reporte</button>
+          </form>
+        </div>
+
+        <div class="results-section">
+          <div class="kpi-cards">
+            <div class="kpi-card">
+              <h3>Ingresos Totales</h3>
+              <p id="kpi-ingresos">$0</p>
+            </div>
+            <div class="kpi-card">
+              <h3>Tickets Cerrados</h3>
+              <p id="kpi-tickets">0</p>
+            </div>
+          </div>
+
+          <div class="charts-grid">
+            <div class="chart-container card">
+              <h3>Distribución de Vehículos</h3>
+              <canvas id="chartCircular"></canvas>
+            </div>
+            <div class="chart-container card">
+              <h3>Ingresos Mensuales</h3>
+              <canvas id="chartBarras"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../../js/dashboard.js"></script>
+  <script src="../../js/reportes.js"></script>
+</body>
+</html>
